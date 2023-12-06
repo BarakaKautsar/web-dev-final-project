@@ -1,0 +1,296 @@
+body {
+  font-family: "IBM Plex Mono", monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2em;
+  margin: 10px 20px;
+  padding: 0;
+}
+
+main {
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background-image: url("../assets/GIF1.gif");
+  width: 100%;
+  height: 15vh;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.product-categories {
+  margin: 0 0;
+  padding: 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  list-style: none;
+}
+
+.category {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  margin: 0;
+  background-color: white;
+  border: solid #006d8f;
+  border-width: 0 2px 2px 0;
+  border-radius: 8px 8px 0 0;
+  padding: 20px 5px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.category:hover {
+  background-color: #ddd;
+}
+
+.category > a {
+  text-decoration: none;
+  color: black;
+}
+
+.active-category {
+  background-color: #006d8f;
+}
+
+.active-category > a {
+  color: white;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: row;
+}
+.account {
+  display: flex;
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.account:hover {
+  background-color: #ddd;
+}
+
+.account > i {
+  text-decoration: none;
+  color: black;
+}
+
+/* Product Styles */
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 15px;
+  width: 200px;
+  cursor: pointer;
+  max-height: 50vh;
+}
+
+.product-card img {
+  max-width: 100%;
+}
+
+.product-card button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Footer styles */
+footer {
+  background-color: #006d8f;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact,
+.social-media {
+  margin-bottom: 20px;
+}
+
+.contact h3,
+.social-media h3 {
+  border-bottom: 2px solid white;
+  padding-bottom: 10px;
+}
+
+.social-media a {
+  display: block;
+  margin-top: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+/* LANDING PAGE */
+#landing-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #006d8f;
+  color: white;
+  padding: 20px;
+}
+
+#landing-header > a {
+  text-decoration: none;
+  color: white;
+}
+#landing-main {
+  background-image: url("../assets/account_bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#landing-main > a {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 15vh;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#landing-main > a:hover {
+  background-color: #ddd;
+}
+
+#landing-main > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+#landing-main > p {
+  font-family: "IBM Plex Mono", monospace;
+  min-width: 80%;
+  margin: 10px 20px;
+  padding: 0;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+form > button {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 15vh;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+form > button:hover {
+  background-color: #ddd;
+}
+
+.input-container > input {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 20vh;
+  margin: 4px 2px;
+  cursor: text;
+  border-radius: 4px;
+  background-color: #ddd;
+}
+
+#login-button {
+  background-color: #006d8f;
+  color: white;
+}
+
+#signup-button {
+  background-color: white;
+  color: black;
+  border: #006d8f solid 2px;
+}
