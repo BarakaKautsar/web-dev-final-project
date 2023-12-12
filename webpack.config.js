@@ -50,16 +50,18 @@ module.exports = {
       filename: "order.html",
       chunks: ["order"],
     }),
-    // Add more instances as needed for other HTML files
+    new HtmlWebpackPlugin({
+      template: "./src/pages/faq.html",
+      filename: "faq.html",
+      chunks: ["order"],
+    }),
   ],
-  // Include loaders for CSS if required
   module: {
     rules: [
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
-      // Add loaders for other file types (images, fonts, etc.) as needed
     ],
   },
 };

@@ -54,6 +54,24 @@ productCategories.addEventListener("click", (e) => {
   updateProducts();
 });
 
+const openOrderPage = (productId) => {
+  console.log("Ordering product");
+
+  // Validate if productId is not empty or undefined
+  if (!productId) {
+    console.error("Product ID is empty or undefined.");
+    return;
+  }
+  const encodedProductId = encodeURIComponent(productId);
+  const url = `order.html?product=${encodedProductId}`;
+  window.location.href = url;
+
+  // Delay the page reload to ensure navigation has completed
+  setTimeout(() => {
+    window.location.reload(true);
+  }, 500); // Adjust the timeout as needed
+};
+
 function showModal(product) {
   console.log(product);
   const modalContent = document.getElementById("modal-content");
@@ -98,6 +116,14 @@ function showModal(product) {
     }
   };
   modalContent.appendChild(addToCartButton);
+
+  const orderButton = document.createElement("button");
+  orderButton.className = "add-to-cart-button";
+  orderButton.textContent = "Place Order";
+  orderButton.onclick = function () {
+    openOrderPage(product.id);
+  };
+  modalContent.appendChild(orderButton);
 
   const modal = document.getElementById("product-modal");
   modal.style.display = "block";
