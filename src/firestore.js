@@ -88,18 +88,16 @@ export const updateUser = (user) => {
   });
 };
 
-export const addUser = (user) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const userRef = doc(usersRef, user.id);
-      setDoc(userRef, user);
-      console.log("User added:", user);
-      resolve(user);
-    } catch (error) {
-      console.error("Error adding user:", error);
-      reject(error);
-    }
-  });
+export const addUser = async (user) => {
+  try {
+    const userRef = doc(usersRef, user.id);
+    await setDoc(userRef, user);
+    console.log("User added:", user);
+    return user;
+  } catch (error) {
+    console.error("Error adding user:", error);
+    throw error;
+  }
 };
 
 export const fetchUserCart = (user) => {

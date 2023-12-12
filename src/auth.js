@@ -27,33 +27,40 @@ if (logoutButton) {
 }
 
 // sign up
-function signUp(event) {
+async function signUp(event) {
   event.preventDefault();
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
+
   if (password === confirmPassword) {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // add user to database
-        const newUser = {
-          id: user.uid,
-          name: user.email,
-          email: user.email,
-          cart: [],
-        };
-        addUser(newUser);
-        window.location.href = "user.html";
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        displayErrorMessage(errorMessage);
-      });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+
+      // add user to database
+      const newUser = {
+        id: user.uid,
+        name: user.email,
+        email: user.email,
+        cart: [],
+      };
+
+      await addUser(newUser);
+      window.location.href = "user.html";
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      displayErrorMessage(errorMessage);
+    }
   } else {
     console.log("passwords don't match");
     displayErrorMessage("Passwords don't match");
