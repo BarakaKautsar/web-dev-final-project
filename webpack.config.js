@@ -7,6 +7,8 @@ module.exports = {
   entry: {
     auth: "./src/auth.js",
     products: "./src/products.js",
+    cart: "./src/cart.js",
+    order: "./src/order.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -14,19 +16,39 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./dist/pages/landing.html",
+      template: "./src/pages/index.html",
+      filename: "index.html",
+      chunks: ["products"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/landing.html",
       filename: "landing.html",
-      chunks: ["auth", "products"], // Include the chunks you want, or remove this line to include all
+      chunks: ["auth"],
     }),
     new HtmlWebpackPlugin({
-      template: "./dist/pages/login.html",
+      template: "./src/pages/login.html",
       filename: "login.html",
-      // chunks: [...] // Specify chunks if necessary
+      chunks: ["auth"],
     }),
     new HtmlWebpackPlugin({
-      template: "./dist/pages/signup.html",
+      template: "./src/pages/signup.html",
       filename: "signup.html",
-      // chunks: [...] // Specify chunks if necessary
+      chunks: ["auth"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/user.html",
+      filename: "user.html",
+      chunks: ["auth"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/cart.html",
+      filename: "cart.html",
+      chunks: ["cart"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/order.html",
+      filename: "order.html",
+      chunks: ["order"],
     }),
     // Add more instances as needed for other HTML files
   ],

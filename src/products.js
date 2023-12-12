@@ -1,5 +1,7 @@
-import { fetchProducts } from "./firestore";
+import { fetchProducts, addToCart, fetchUserCart } from "./firestore";
+import { getUser } from "./auth";
 let products = [];
+let userCart = [];
 
 const updateProducts = () => {
   const productList = document.getElementById("product-list");
@@ -44,27 +46,6 @@ function updateCategory(category) {
   activeCategory = category;
 }
 
-// function updateProducts() {
-//   const productList = document.getElementById("product-list");
-//   productList.innerHTML = "";
-//   products.forEach((product) => {
-//     if (product.category !== categories.indexOf(activeCategory)) return;
-//     else {
-//       const card = document.createElement("div");
-//       card.className = "product-card";
-//       card.onclick = function () {
-//         showModal(product);
-//       };
-//       card.innerHTML = `
-//         <img src="${product.imageUrl}" alt="${product.name}">
-//         <h3>${product.name}</h3>
-//         <p>$${product.price.toFixed(2)}</p>
-//     `;
-//       productList.appendChild(card);
-//     }
-//   });
-// }
-
 productCategories.addEventListener("click", (e) => {
   const targetCategory = e.target.closest("li");
   if (!targetCategory) return;
@@ -82,6 +63,41 @@ function showModal(product) {
         <p>$${product.price.toFixed(2)}</p>
         <!-- Add more details as needed -->
     `;
+  const addToCartButton = document.createElement("button");
+  addToCartButton.className = "add-to-cart-button";
+  addToCartButton.textContent = "Add to Cart";
+  addToCartButton.onclick = async function () {
+    try {
+      const user = await getUser();
+
+      if (user) {
+        const productId = product.id;
+        // Check if the product is already in the cart
+        const userCart = await fetchUserCart(user);
+        const isInCart = userCart.some(
+          (cartProduct) => cartProduct.id === productId
+        );
+
+        if (isInCart) {
+          // If the product is already in the cart, update the button text and disable the button
+          addToCartButton.textContent = "Added to Cart";
+          addToCartButton.disabled = true;
+          return;
+        }
+        await addToCart(user, productId).then(() => {
+          console.log("Product added to cart!");
+          closeModal();
+        });
+      } else {
+        console.log("User not logged in");
+        window.location.href = "landing.html";
+      }
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      // Handle the error as needed
+    }
+  };
+  modalContent.appendChild(addToCartButton);
 
   const modal = document.getElementById("product-modal");
   modal.style.display = "block";

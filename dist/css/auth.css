@@ -1,0 +1,134 @@
+/* LANDING PAGE */
+#landing-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #006d8f;
+  color: white;
+  padding: 20px;
+}
+
+#landing-header > a {
+  text-decoration: none;
+  color: white;
+}
+#landing-main {
+  background-image: url("../assets/account_bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#landing-main > a {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 15vh;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#landing-main > a:hover {
+  background-color: #ddd;
+}
+
+#landing-main > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+#landing-main > p {
+  font-family: "IBM Plex Mono", monospace;
+  min-width: 80%;
+  margin: 10px 20px;
+  padding: 0;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+form > button {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 15vh;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+form > button:hover {
+  background-color: #ddd;
+}
+
+.input-container > input {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  min-width: 25vh;
+  margin: 4px 2px;
+  cursor: text;
+  border-radius: 4px;
+  background-color: #ddd;
+}
+
+#login-button {
+  background-color: #006d8f;
+  color: white;
+}
+
+#signup-button {
+  background-color: white;
+  color: black;
+  border: #006d8f solid 2px;
+}
+
+#logout {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 15vh;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #006d8f;
+  color: white;
+}
+
+#logout-button:hover {
+  background-color: #ddd;
+}
+
+#error-message {
+  color: red;
+}
