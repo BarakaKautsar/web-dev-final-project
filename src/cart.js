@@ -21,6 +21,7 @@ const updateCart = () => {
     removeButton.textContent = "Remove";
     removeButton.onclick = function () {
       removeProductFromCart(user, product.id).then(() => {
+        products = products.filter((p) => p.id !== product.id);
         updateCart();
       });
     };
@@ -71,8 +72,6 @@ const openOrderPage = () => {
   // Construct the URL with encoded product IDs
   const url = `order.html?products=${encodedProductIds}`;
 
-  // console.log(url);
-  // Uncomment the line below to navigate to the constructed URL
   window.location.href = url;
   // Delay the page reload to ensure navigation has completed
   setTimeout(() => {

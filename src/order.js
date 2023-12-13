@@ -16,7 +16,6 @@ document
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
-  console.log("url:", url);
   name = name.replace(/[\[\]]/g, "\\$&");
   const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(url);
@@ -76,12 +75,3 @@ console.log("current url: ", window.location.href);
 // Call the function to fetch product details
 // console.log("productIds:", productIds);
 fetchProductDetails();
-
-// var urlParams = new URLSearchParams(window.location.search);
-// console.log("urlParams: " + urlParams);
-
-// // Get the value of the 'products' parameter
-// var products = urlParams.get("products");
-
-// // Log the products to the console (for demonstration purposes)
-// console.log(products);
