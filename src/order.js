@@ -11,7 +11,6 @@ document.getElementById("textButton").addEventListener("click", function () {
 document
   .getElementById("instagramButton")
   .addEventListener("click", function () {
-    // Redirect to your Instagram page (replace 'your_instagram_username' with your username)
     window.location.href = "https://www.instagram.com/barakakautsar/";
   });
 
@@ -78,11 +77,11 @@ console.log("current url: ", window.location.href);
 // console.log("productIds:", productIds);
 fetchProductDetails();
 
-var urlParams = new URLSearchParams(window.location.search);
-console.log("urlParams: " + urlParams);
+// var urlParams = new URLSearchParams(window.location.search);
+// console.log("urlParams: " + urlParams);
 
-// Get the value of the 'products' parameter
-var products = urlParams.get("products");
+// // Get the value of the 'products' parameter
+// var products = urlParams.get("products");
 
-// Log the products to the console (for demonstration purposes)
-console.log(products);
+// // Log the products to the console (for demonstration purposes)
+// console.log(products);
