@@ -79,7 +79,7 @@ function showModal(product) {
         <img src="${product.imageUrl}" alt="${product.name}">
         <h2>${product.name}</h2>
         <p>$${product.price.toFixed(2)}</p>
-        <!-- Add more details as needed -->
+       <p>${product.desc}</p>
     `;
   const addToCartButton = document.createElement("button");
   addToCartButton.className = "add-to-cart-button";
