@@ -1,4 +1,4 @@
-# BACK2BANDUNG Site Read Me
+# BACK2BANDUNG DOCUMENTATION
 
 ## Project Overview
 
@@ -171,12 +171,6 @@ const fetchProductDetails = async () => {
   }
 };
 ```
-
-## How to Use
-
-1. **Clone the Repository:** Use `git clone [repository_url]` in your terminal.
-2. **Open the Files:** Explore and review the code files.
-3. **Run the Website Locally:** Use a local server or development environment to view the website.
 
 ## To-Do List & Improvements
 
