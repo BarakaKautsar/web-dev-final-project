@@ -23,7 +23,7 @@ This website is developed as a final project for the NYU IDM Intro to Web Develo
 ### Tools and Frameworks Used
 
 - **Backend:** Firebase for authentication and Firestore for storing user and product data.
-- **Deployment:** Vercel for hosting and continuous deployment from a Git repository. (special thanks to [Bach Le](https://github.com/bachdumpling) for helping with this :D )
+- **Deployment:** Vercel for hosting and continuous deployment from a Git repository. (special thanks to @bachdumpling for helping with this :D )
 
 ### JavaScript Files Overview
 
