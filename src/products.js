@@ -63,7 +63,7 @@ const openOrderPage = (productId) => {
     return;
   }
   const encodedProductId = encodeURIComponent(productId);
-  const url = `order.html?product=${encodedProductId}`;
+  const url = `order.html?products=${encodedProductId}`;
   window.location.href = url;
 
   // Delay the page reload to ensure navigation has completed
