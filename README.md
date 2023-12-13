@@ -6,7 +6,7 @@ This website is developed as a final project for the NYU IDM Intro to Web Develo
 
 ### Site URL
 
-[BACK2BANDUNG Site](web-dev-final-project-49g3-barakakautsars-projects.vercel.app)
+[BACK2BANDUNG Site](https://web-dev-final-project-49g3-git-main-barakakautsars-projects.vercel.app)
 
 ## Functionality
 
