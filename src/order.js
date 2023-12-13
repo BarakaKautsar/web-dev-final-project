@@ -25,10 +25,7 @@ function getParameterByName(name, url) {
 }
 
 // Get the product IDs from the URL parameters
-const productIdsParam = getParameterByName(
-  "products"
-  //   "order.html?products=djrCwHijh10wfTgLO0Lx,Cb84ZSK2HZNfVIQ9PM3K"
-);
+const productIdsParam = getParameterByName("products");
 
 // Split the comma-separated product IDs into an array
 const productIds = productIdsParam ? productIdsParam.split(",") : [];

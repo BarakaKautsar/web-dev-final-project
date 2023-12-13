@@ -1,7 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,signOut,
-// } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbNF8RlkhrSTBmGub6mWMtCfJIBE23PPw",

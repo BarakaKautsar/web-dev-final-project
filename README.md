@@ -28,11 +28,149 @@ This website is developed as a final project for the NYU IDM Intro to Web Develo
 ### JavaScript Files Overview
 
 1. **Firebase-config.js:** Firebase configuration settings for the web app.
+
+```javascript
+const firebaseConfig = {
+  apiKey: "AIzaSyCbNF8RlkhrSTBmGub6mWMtCfJIBE23PPw",
+  authDomain: "back2bandung.firebaseapp.com",
+  databaseURL: "https://back2bandung-default-rtdb.firebaseio.com",
+  projectId: "back2bandung",
+  storageBucket: "back2bandung.appspot.com",
+  messagingSenderId: "1055417846854",
+  appId: "1:1055417846854:web:f80aace8996beb4fcf0e47",
+  measurementId: "G-9TZPBMY2S6",
+};
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+```
+
 2. **Firestore.js:** Manages CRUD operations for user and product data in Firestore.
+
+```javascript
+import { app } from "./firebase-config";
+
+const db = getFirestore(app);
+const productsRef = collection(db, "products");
+const usersRef = collection(db, "users");
+
+export const fetchProducts = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      const products = [];
+      onSnapshot(productsRef, (snapshot) => {
+        snapshot.forEach((doc) => {
+          products.push({ id: doc.id, ...doc.data() });
+        });
+        // console.log(products);
+        resolve(products); // Resolve the promise with the fetched products
+      });
+    } catch (error) {
+      console.error("Error fetching products from Firestore:", error);
+      reject(error); // Reject the promise if there's an error
+    }
+  });
+};
+```
+
 3. **Auth.js:** Handles user authentication functions (sign up, log in, log out).
+
+```javascript
+import { app } from "./firebase-config";
+export const auth = getAuth(app);
+function login(event) {
+  event.preventDefault();
+  if (auth.currentUser) {
+    console.log("user is already logged in");
+    window.location.href = "user.html";
+    return;
+  } else {
+    console.log("login");
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    console.log(email, password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        window.location.href = "user.html";
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        displayErrorMessage(errorMessage);
+      });
+  }
+}
+```
+
 4. **Products.js:** Controls functionality on the main index page.
+
+```javascript
+import { fetchProducts, addToCart, fetchUserCart } from "./firestore";
+import { getUser } from "./auth";
+let products = [];
+
+const initProductPage = async () => {
+  try {
+    products = await fetchProducts();
+    console.log("Products:", products);
+    updateProducts();
+  } catch (error) {
+    console.error("Error initializing product page:", error);
+  }
+};
+```
+
 5. **Cart.js:** Manages functionality for the user cart page.
+
+```javascript
+import { fetchUserCart, removeProductFromCart } from "./firestore";
+import { getUser } from "./auth";
+const initCart = async () => {
+  try {
+    const userCart = await fetchUserCart(user);
+    products = userCart;
+    updateCart();
+  } catch (error) {
+    console.error("Error initializing cart:", error);
+  }
+};
+```
+
 6. **Order.js:** Handles the functionality for the order page, fetching and displaying product details.
+
+```javascript
+import { fetchProductbyId } from "./firestore.js";
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+// Get the product IDs from the URL parameters
+const productIdsParam = getParameterByName("products");
+
+// Split the comma-separated product IDs into an array
+const productIds = productIdsParam ? productIdsParam.split(",") : [];
+
+// Fetch product details for each product ID
+const fetchProductDetails = async () => {
+  try {
+    const productDetails = await Promise.all(productIds.map(fetchProductbyId));
+    displayProductDetails(productDetails);
+    const totalPrice = calculateTotalPrice(productDetails);
+    const totalPriceElement = document.getElementById("total-price");
+    totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+  } catch (error) {
+    console.error("Error fetching product details:", error);
+  }
+};
+```
 
 ## How to Use
 
