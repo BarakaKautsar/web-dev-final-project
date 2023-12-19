@@ -39,10 +39,17 @@ h1 {
 .remove-button {
   background-color: red;
   color: white;
+  font-family: "IBM Plex Mono", monospace;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 15vh;
+  margin: 4px 2px;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .remove-button:hover {

@@ -147,6 +147,24 @@ main {
   width: 80%;
 }
 
+.modal-content img {
+  max-width: 100%;
+}
+
+.modal-content button {
+  font-family: "IBM Plex Mono", monospace;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: 15vh;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 .close {
   position: absolute;
   top: 0;
